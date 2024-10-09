@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=CommandWords
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ "World\ of\ Zuul"\ application.\ \r\n\ "World\ of\ Zuul"\ is\ a\ very\ simple,\ text\ based\ adventure\ game.\r\n\ \r\n\ This\ class\ holds\ an\ enumeration\ of\ all\ command\ words\ known\ to\ the\ game.\r\n\ It\ is\ used\ to\ recognise\ commands\ as\ they\ are\ typed\ in.\r\n\r\n\ @author\ \ Michael\ K\u00F6lling\ and\ David\ J.\ Barnes\r\n\ @version\ 2016.02.29\r\n
+comment1.params=
+comment1.target=CommandWords()
+comment1.text=\r\n\ Constructor\ -\ initialise\ the\ command\ words.\r\n
+comment2.params=command\ parameters\ content
+comment2.target=java.lang.String\ getCommandDescription(java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.text=\r\n\ Returns\ the\ decription\ of\ the\ command\ formatted\ in\ the\ following\ way\:\r\n\ [command]\ [parameters]\ \:\ [description]\r\n\ @param\ command\ the\ command\ we\ want\ to\ describe\r\n\ @param\ parameters\ the\ parameters\ of\ the\ command\r\n\ @param\ content\ the\ actual\ description\ of\ the\ command\r\n\ @return\ the\ full\ formatted\ description\ and\ use\ of\ the\ command\r\n
+comment3.params=doc
+comment3.target=void\ getCommands(org.w3c.dom.Document)
+comment3.text=\r\n\ Load\ in\ the\ commands\ and\ their\ descriptions\ from\ the\ CONST_COMMANDWORDS.xml\ file\r\n\ to\ the\ validCommnads\ ArrayList\ with\ the\ array\ {[command],[description]}\r\n\ @param\ doc\ the\ xml\ document\ we\ are\ parsing\ to\ get\ the\ information\r\n
+comment4.params=aString
+comment4.target=boolean\ isCommand(java.lang.String)
+comment4.text=\r\n\ Check\ whether\ a\ given\ String\ is\ a\ valid\ command\ word.\ \r\n\ @return\ true\ if\ it\ is,\ false\ if\ it\ isn't.\r\n
+comment5.params=
+comment5.target=void\ showAll()
+comment5.text=\r\n\ Print\ all\ valid\ commands\ to\ System.out.\r\n
+comment6.params=command
+comment6.target=void\ helpCommand(java.lang.String)
+comment6.text=\r\n\ Prints\ out\ the\ full\ description\ and\ use\ for\ the\ command\ specified\r\n\ @param\ command\ the\ command\ that\ we\ are\ getting\ the\ help\ for\r\n
+comment7.params=word
+comment7.target=java.lang.String\ normalizeCommandWord(java.lang.String)
+comment7.text=\r\n\ Takes\ a\ word,\ and\ matches\ it\ to\ the\ closest\ corresponding\ command\ word\ (as\ much\ as\ one\ letter\ difference).\ "Normalizing"\ here\ is\ meant\ to\ make\ the\ word\ fit\ the\ command\ words.\r\n\ @param\ word\ the\ word\ we\ want\ to\ "normalize"\r\n\ @return\ the\ "normalized"\ word.\ Return\ null\ if\ the\ word\ is\ not\ in\ the\ set\ of\ command\ words\r\n
+numComments=8

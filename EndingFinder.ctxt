@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=EndingFinder
+comment0.text=\r\n\ This\ class\ is\ part\ of\ the\ project\ called\ "IUNI".\r\n\ It's\ a\ simple\ text\ adventure\ game,\ where\ you\ can\ walk\ around\ \r\n\ and\ interact\ with\ characters\ and\ items,\ in\ order\ to\ regain\ your\ memory.\r\n\ \r\n\ This\ class\ handles\ the\ finding\ and\ printing\ of\ the\ different\ endings\ of\ the\ game,\r\n\ from\ an\ XML\ file\ named\ CONST_END.xml\r\n\ \r\n\ @author\ Gabriele\ Trotta\ (K21006956)\r\n
+comment1.params=end\ hasPie
+comment1.target=EndingFinder(java.lang.String,\ boolean)
+comment1.text=\r\n\ Creates\ the\ EndingFinder\ object,\ that\ correlates\ the\ end\ to\ the\ corresponding\r\n\ block\ of\ text\ in\ the\ CONST_END.xml\ file\r\n\ @param\ end\ the\ identifier\ for\ the\ ending\ passed\ in\r\n\ @param\ hasPie\ whether\ or\ not\ the\ player\ has\ a\ slice\ of\ pie\ (Item)\r\n
+comment2.params=hasPie
+comment2.target=void\ printEnd(boolean)
+comment2.text=\r\n\ This\ function\ prints\ out\ the\ ending\ taken\ from\ the\ corresponding\ <end>\ element\ from\ the\r\n\ XML\ file\r\n
+numComments=3

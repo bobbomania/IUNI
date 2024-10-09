@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=TextViewer
+comment1.params=
+comment1.target=TextViewer()
+comment2.params=text\ timeDelta
+comment2.target=void\ printText(java.lang.String,\ long)
+comment3.params=
+comment3.target=void\ printDialogBar()
+numComments=4

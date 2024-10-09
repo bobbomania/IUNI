@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><allData isCorrupted="false">
+    <!--  PPA - 1 / Assignment 2 - World of Zuul
+          Gabriele Trotta (K21006956)  -->
+
+    <!--
+        This xml file is part of the project called "IUNI".
+        It's a simple text adventure game, where you can walk around 
+        and interact with characters and items, in order to regain your memory.
+
+        This file contains all the information regarding the game's objects. Namely,
+        the items, rooms, npcs and the player.
+
+        <room name="roomName" exits="direction roomName" 
+            isLocked="[boolean]" key="keyName" isEnd="end_id" 
+            memoryRequired="memoryPoints" noInvestigatePerson="npcName">
+            
+            *name="roomName" : specifies the name of the room.
+
+            *exits="direction roomName/otherDirection otherRoomName" : specifies the room's
+            exits and the direction taken to move to the exit
+
+            *isLocked=[boolean] : specifies whether the room is locked or not,
+            write "true" if the room is locked. Leave blank if room is unlocked
+
+            *key="keyName" : specifies the name of the key required to open the door
+
+            *isEnd="end_id" : specifies an ending unlocked when entering the room, by the
+            end's identifier. (ids available : good, bad1, bad2, secret)
+
+            *memoryRequired="memoryPoints" : specifies the mem points required to enter the room
+
+            *noInvestigatePerson="npcName" : specifies the name of the npc that doesn't allow
+            investigation within the room
+        
+        
+        <player current="roomName" memoryScore="memoryPoints">
+            *current="roomName" : specifies the name of the player's current room
+            
+            *memoryScore="memoryPoints" : specifies the player's initial memory points
+        
+        <npc name="npcName" room="roomName" position="[col,row]">
+            *name="npcName" : specifies the npc's name
+
+            *room="roomName" : specifies the name of the npc's current room
+
+            *position="[col,row]" : specifies the position of the npc in relation to the 
+            room's map's columns and rows
+        
+        <item name="itemName" action="actionName parameters" weight="weight" isHoldable="[boolean]" 
+        room="roomName" npc="npcName" memoryGiven="memoryPoints" position="[col,row]">
+            *name="itemName" : specifies the name of the item
+
+            *action="actionName parameters" : specifies the action name (names available : moveRandom) and
+            its parameters
+
+            *weight="weight" : specifies the weight of the item
+
+            *isHoldable="[boolean]" : specifies whether the item can be held by the player or not
+
+            *room="roomName" : specifies the room where the item is located
+
+            *npc="npcName" : specifies whose (npc) inventory the item is in
+            If you wish to add an item to the player's inventory then leave the 'room' and 'npc' attributes empty
+
+            *memoryGiven="memoryPoints" : specifies the memory points given if the player
+            interacts with the item
+
+            *position="[col,row]" : specifies the position of the item in relation to the 
+            room's map's columns and rows
+        
+        author : Gabriele Trotta (K21006956)
+
+    -->
+
+    <!-- defines the default map dimensions-->
+    <map dimension="30,10"/>
+
+    <!-- room's data section: -->
+    <room dimension="20,8" exits="south north-garden" isLocked="true" key="shed-key" name="shed">
+        in a shed.
+        Some tools are scattered around with many different hardware pieces such as nails. The whole place
+        looks cluttered and dark.
+    </room>
+
+    <room exits="south south-garden/east livingroom/north shed/west road" name="north-garden">
+        in front of a orchard, populated with various species of flowers.
+        Their bright colours and vivid perfume appease you.
+    </room>
+
+    <room dimension="15,30" exits="east north-garden" isEnd="secret" isLocked="true" key="garden-key" name="road">
+        on a wide open road.
+    </room>
+
+    <room exits="east bedroom/north north-garden" name="south-garden">
+        in front of a square of short-cut grass, with alternating red tulips and bright yellow daffodils on its edges.
+        In the middle of the garden a blossoming cherry tree can be seen
+    </room>
+
+    <room dimension="28,10" exits="west south-garden/east toilet/north hallway" name="bedroom">
+        in somebody's bedroom. 
+        This room reminds you both of your own home, yet something feels different.
+        This bedroom has a vivid verlan carpet floor with contrasting white walls, which makes the furniture stand out more
+    </room>
+
+    <room dimension="15,7" exits="west bedroom" name="toilet">
+        in a peculiar toilet. 
+        The towels and toilet paper are brightly coloured while the walls remain white.
+        In the corner of the room you see a shower, with handrails on its side.
+    </room>
+
+    <room dimension="14,20" exits="south bedroom/west gameroom/east storage-room/north livingroom" name="hallway">
+        in a hallway
+        The walls seem too close to each other, as if you would find yourself in a tight cabinet
+    </room>
+
+    <room dimension="20,8" exits="east hallway" name="gameroom">
+        in a room with many different people. They seem to be playing some sort of games, although you can't recognise any. 
+        The furniture is dark green and pops to in contrast to the butter yellow walls.
+    </room>
+    
+    <room dimension="20,10" exits="west hallway" isLocked="true" key="storage-key" name="storage-room">
+        in a sort of storeroom.
+        There are many kinds of cluttered objects scattered around and staring too long at these makes 
+        you feel dizzy.
+    </room>
+
+    <room dimension="35,10" exits="south hallway/west north-garden/east reception-hallway/north kitchen" name="livingroom">
+        in a livingroom.
+        You see some people are laying on purple sofas, doing nothing. There is various electronics,
+        although no one uses them.
+    </room>
+
+    <room dimension="28,8" exits="south livingroom/north construction-works" name="kitchen">
+        in an ordinary kitchen.
+        This kitchen looks like a standard kitchen with an oven, fridge and a toaster.
+        An old woman can be seen preparing some sort of pie.
+    </room>
+
+    <room exits="south kitchen" isEnd="bad1" memoryRequired="15" name="construction-works">
+        in a dark construction zone.
+    </room>
+
+    <room dimension="60,5" exits="west livingroom/east reception/north sarah's-bedroom/south music-room" name="reception-hallway">
+        in a more spatious hallway.
+        Particularly, there are various patterns scattered around the wall that look like eyes staring at you,
+        which makes you feel observed.
+    </room>
+
+    <room dimension="28,10" exits="south reception-hallway" name="sarah's-bedroom" noInvestigatePerson="sarah">
+        in a room similar to the first one.
+        The main difference is that this room has numerous numbers printed on pages stuck to the walls.
+    </room>
+
+    <room dimension="24,8" exits="north reception-hallway" name="music-room">
+        in a room with a worn-out upright piano.
+        Two purple armchairs are opposite of the piano, and a large window is letting the sunset light shine through.
+    </room>
+
+    <room exits="west reception-hallway" isEnd="good" memoryRequired="15" name="reception">
+        in a reception room.
+        You can distinguish an operator sitting behind a desk, tending to a young woman and her child. 
+        You see the desk a banner which reads : "Iuni's Alzheimer's and Dementia Centre."
+    </room>
+
+    <!-- player and npc's data section: -->
+
+    <player current="sarah's-bedroom" memoryScore="5"/>
+
+    <npc name="robert" position="27,8" room="south-garden"/>
+    <npc name="james" position="28,7" room="livingroom"/>
+    <npc name="betty" position="4,5" room="kitchen"/>
+    <npc name="barbara" position="4,4" room="gameroom"/>
+    <npc name="sarah" position="" room="livingroom"/>
+
+    <!-- item's data section: -->
+
+    <item isHoldable="false" memoryGiven="0" name="cherry-tree" npc="" position="21,7" room="south-garden" weight="0">
+        <description>
+            a cherry tree that stands tall and mighty, inviting its admirers to pluck one of its bright red cherries.
+        </description>
+        <action>
+            You try to get a cherry, but it's on a branch that is too high off the ground.
+        </action>
+    </item>
+
+    <item isHoldable="false" memoryGiven="2" name="mirror" npc="" position="10,5" room="toilet" weight="0">
+        <description>
+            a large square mirror
+        </description>
+        <action>
+            You look into the mirror.
+            You see a tall, old man with a flimsy hat on his head. His shirt is poorly buttoned and
+            he looks extremely tired.
+        </action>
+    </item>
+
+    <item isHoldable="true" memoryGiven="3" name="picture" npc="" position="5,4" room="bedroom" weight="1">
+        <description>
+            an old picture in a silver casing.
+        </description>
+        <action>
+            You take a close look at the image. 
+            It seems that there is a middle-aged man holding a newborn baby.
+            Although you see joy in this man's eyes, it seems that he's not looking at the camera but rather
+            he's dozing off in the distance.
+        </action>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="diary" npc="" room="" weight="3">
+        <description>
+            a fully-wrapped brand new diary.
+        </description>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="paper-quire" npc="" position="11,2" room="storage-room" weight="1">
+        <description>
+            a messy stack of written pages.
+        </description>
+    </item>
+
+    <item isHoldable="false" memoryGiven="0" name="bench" npc="" position="2,5" room="north-garden" weight="0">
+        <description>
+            a sturdy red bench, under a large willow tree.
+        </description>
+        <action>
+            You decide to sit on the bench under the large willow.
+            The smell of the willow reminds you of days where you would spend time with your nephew in many different parks.
+            This reminds you that you didn't see your nephew in a while...
+        </action>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="shears" npc="" position="14,4" room="shed" weight="4">
+        <description>
+            a pair of rusty, yet functional shears.
+        </description>
+    </item>
+
+    <item isHoldable="false" memoryGiven="0" name="television" npc="" position="15,4" room="livingroom" weight="0">
+        <description>
+            a turned-off CRT television.
+        </description>
+        <action>
+            You turn on the television.
+            Your favourite show is displayed, a rarity these days. You're entertained for a couple minutes,
+            but you finally get bored and turn the TV off.
+        </action>
+    </item>
+
+    <item isHoldable="false" memoryGiven="0" name="toaster" npc="" position="14,6" room="kitchen" weight="0">
+        <description>
+            a brand-new, green toaster.
+        </description>
+        <action>
+            You try to turn on the toaster.
+            You look at a piece of paper above the toaster with instructions on how to use
+            it and realise you have no reason to use it.
+        </action>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="knife" npc="" position="20,6" room="" weight="5">
+        <description>
+            a large, butcher knife.
+        </description>
+    </item>
+
+    <item isHoldable="false" memoryGiven="3" name="piano" npc="" position="13,5" room="music-room" weight="0">
+        <description>
+            a black upright piano.
+        </description>
+        <action>
+            You play the piano.
+            You're playing a piece that you don't really remember the name of, however your
+            fingers manage to find their place and play the correct notes. The music gives 
+            you a feeling of nostalgia mixed with glee.
+        </action>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="cherry" npc="robert" position="" room="" weight="1">
+        <description>
+            a red cherry.
+        </description>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="shed-key" npc="" position="10,2" room="sarah's-bedroom" weight="1">
+        <description>
+            a normal silver key.
+        </description>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="storage-key" npc="" room="" weight="1">
+        <description>
+            a stainless-steel key.
+        </description>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="garden-key" npc="" position="" room="" weight="1">
+        <description>
+            a golden, rusty key
+        </description>
+        <action>
+            You open the garden's gate.
+        </action>
+    </item>
+
+    <item isHoldable="true" memoryGiven="0" name="pie-slice" npc="betty" position="" room="" weight="2">
+        <description>
+            a beautiful, golden piece of cherry pie.
+        </description>
+        <action>
+            You're not really hungry so you decide to keep it for later.
+        </action>
+    </item>
+
+    <item action="moveRandom pills" isHoldable="true" memoryGiven="0" name="pills" npc="" position="2,6" room="bedroom" weight="1">
+        <description>
+            a small box of white, circular pills
+        </description>
+        <action>
+            You decide to ingest one pill.
+            Everything around you starts moving and shifting, your head is spinning uncontrollably.
+            You fall on the floor and pass out.
+
+            You wake up in a completely different room, and decide to toss the pills away.
+        </action>
+    </item>
+</allData>

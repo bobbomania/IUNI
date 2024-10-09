@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--  PPA - 1 / Assignment 2 - World of Zuul
+      Gabriele Trotta (K21006956)  -->
+<!-- 
+    This xml file is part of the project called "IUNI".
+    It's a simple text adventure game, where you can walk around 
+    and interact with characters and items, in order to regain your memory.
+
+    This file contains all the information regarding the different endings of the game.
+
+    Each <end> node has one attribute:
+        * "id" : the identifier for the specific ending
+    Each of these nodes can have two types of children : <text> and <pie>.
+    The <text> contains the content of the parent ending. You should specify the ending,
+    with the ending's outcome and the name and you should write a capitalized "ENDING".
+
+    The <pie> contains the text of the parent ending, given the player has a pie-slice item.
+
+    author : Gabriele Trotta (K21006956)
+
+-->
+<allEnds>
+    <end id="good">
+        <text>
+            You see a familiar figure standing 5m away from you talking with some sort of receptionist.
+            Near her, you see a little child, holding her hand really tightly.
+            You decide to come closer to them.
+
+            Receptionist : 
+                We don't know if he still remembers any of his youth, and if he might've forgotten
+                even most of his adult life. We might need to move him to a more specialised faculty.
+            
+            Rebecca (woman standing) :
+                But I am sure that he still remembers us! He can't have forgotten all the times he spent with
+                Noah! I am sure that if we-
+            
+            Charlie (Player) :
+                *takes off hat*
+                Hi Rebecca, I would like to stand with you on that one.
+            
+            Noah, the little kid, proceeds to run up to our protagonist and hug him tightly.
+            <pie>
+                You remember you have a slice of a cherry pie, so you give it to your nephew;
+                which is incidentally his favourite flavour.
+
+                With tears in his eyes, and snot running from his nose, he thanks you with a beaming smile.
+            </pie>
+
+            GOOD ENDING : MEMORY RECOVERED AND FAMILY REUNITED
+        </text>
+    </end>
+
+    <end id="bad1">
+        <text>
+            You find yourself lost in a dark room.
+            You're scared and don't even know how to go back to the kitchen so you wander further ahead.
+            The caretakers find you four hours later, cuddled up in a ball near a wall; in delusion.
+            They decide that maybe you need more therapy, and put you under strict supervision.
+            
+            BAD ENDING : LOST AND AFRAID.
+        </text>
+    </end>
+
+    <end id="bad2">
+        <text>
+            You foolishly decided to hand over a knife to a startled carer.
+        </text>
+        <pie>
+            To sweeten the situation you try to give a slice of pie to the carer, but to no avail.
+        </pie>
+        <text>
+            The carer, reasonably shocked, called psychologists and after a careful evauluation,
+            they decided to put you in a specialised facility for a more grave psychological condition.
+    
+            BAD ENDING : ANOMALOUS DANGEROUS BEHAVIOUR
+        </text>
+    </end>
+
+    <end id="secret">
+        <text>
+            You find yourself in a road with pedestrians walking, cars moving and dogs barking.
+            You feel that you want to move away from the strange house you found yourself earlier, and
+            have a long sustained walk. You get to a green park, where you sit on a bench and gently fall asleep.
+        
+            SECRET ENDING : CALM FUGITIVE
+        </text>
+    </end>
+</allEnds>

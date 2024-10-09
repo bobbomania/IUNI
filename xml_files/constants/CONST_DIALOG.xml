@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<allDialog isCorrupted="false">
+<!--  PPA - 1 / Assignment 2 - World of Zuul
+      Gabriele Trotta (K21006956)  -->
+<!--
+    This xml file is part of the project called "IUNI".
+    It's a simple text adventure game, where you can walk around 
+    and interact with characters and items, in order to regain your memory.
+
+    This file contains all the data handled during the dialogue between the player and 
+    an NPC (or the game itself).
+    
+    Element Nodes key:
+        -> <allDialog> :
+            is the root node used just as a container for all other nodes.
+
+        -> <dialog> : 
+            is the node that specifies the dialog for a certain NPC.
+        
+        -> <interaction> :
+            is the node that specifies any interaction that satisfies various conditions specified by its attributes.
+        
+        -> <message> :
+            is the node that specifies a message if an interaction's condition has been satisfied
+
+        -> <choice> :
+            is the node that specifies a choice of an answer given by the player to an NPC's question
+
+    Attributes of Element Nodes Key:
+        -> In <dialog> : 
+            * name=NPC_name : assigns the following dialog to an NPC with name NPC_name
+        
+        -> in <interaction> :
+            * condition="room" : the room in which the NPC will have said interaction. Leave "default" if
+            the interaction happens in any room.
+
+            * specialCondition="conditionFunctionKey attribute" : is the special condition that must be 
+            satisfied for an interaction to occur. Otherwise it can be used by the npc to perform an
+            action or to set a variable.
+
+            * unmatched="string" : the response if the special condition isn't satisfied.
+
+            * totalRepetitions="int" : an integer that tells us how many times left the player can perform an interaction.
+            If it comes to 0, the interaction will be ignored.
+
+        -> in <choice> :
+            * id=string : a string that specifies the different responses that result in the choice taken 
+            (they are separated by "/"). Substitue "default" in string if there is an unmatched choice.
+
+    author : Gabriele Trotta (K21006956)
+
+-->
+
+    <dialog name="robert">
+        <interaction condition="south-garden" specialCondition="hasItem storage-key">
+            <message>
+                Good evening, I really wish to prune this cherry tree.
+                Would you be so kind for helping me find a pair of shears? 
+            </message>
+            <choice id="y/yes/ye/yeah/sure/ok/okay/k/kk">
+                <interaction specialCondition="giveItem storage-key">
+                    <message>Here, I think I can give you this it might help you.</message>
+                </interaction>
+            </choice>
+            <choice id="default">
+                <message>
+                    Oh nevermind, I will find them without your help.
+                </message>
+            </choice>
+        </interaction>
+
+        <interaction condition="south-garden" specialCondition="hasItem shears" totalRepetitions="1" unmatched="It doesn't seem that you found the shears.">
+            <message>Thanks for the shears! Now I can finally cut this tree's long branches.</message>
+            <interaction specialCondition="dropItem cherry"></interaction>
+        </interaction>
+
+        <interaction condition="south-garden" specialCondition="missItem cherry">
+            <message>I can finally rest on this bench in peace.</message>
+        </interaction>
+
+    </dialog>
+
+    <dialog name="james">
+        <interaction condition="livingroom" totalRepetitions="1" specialCondition="missItem diary">
+            <message>
+                Hi old friend, I was really looking for a diary, I keep forgetting
+                when the show "Double-Trouble: the sequel" airs.
+            </message>
+        </interaction>
+
+        <interaction condition="livingroom" totalRepetitions="1" specialCondition="hasItem diary" unmatched="You didn't find the diary, right?">
+            <message>Oh thank you! I really needed this.</message>
+            <message>
+                    You know, for the past few weeks I have been struggling with remembering
+                    even the most basic tasks. Heh, at least I still remember about my daughter, Jessica.
+            </message>
+            <interaction specialCondition="giveMemories 3"></interaction>
+        </interaction>
+
+        <interaction condition="livingroom" specialCondition="hasItem diary">
+            <message>Now I think I'll rest a bit, I'm getting sleepy.</message>
+        </interaction>
+
+    </dialog>
+
+    <dialog name="barbara">
+        <interaction condition="gameroom" specialCondition="hasItem garden-key">
+            <message>
+                I'm really bored, no one wants to play a game with me.
+                Do you want to play with me?
+            </message>
+            <choice id="y/yes/ye/yeah/sure/ok/okay/k/kk">
+                <message>Oh, perfect! Let me explain the game then.</message>
+                <interaction specialCondition="playGame"></interaction>
+            </choice>
+
+            <choice id="default">
+                <message>Shame, if you want to play sometime I'll wait here.</message>
+            </choice>
+        </interaction>
+
+        <interaction condition="gameroom" specialCondition="missItem garden-key"> 
+            <message>That game sure was fun!</message>
+        </interaction>
+    </dialog>
+
+    <dialog name="betty">
+        <interaction condition="north-garden">
+            <message>The sunset sure is beautiful out here.</message>
+        </interaction>
+
+        <interaction condition="kitchen" specialCondition="hasItem knife">
+            <interaction specialCondition="missItem cherry" totalRepetitions="1">
+                <message>
+                    Oh thank you very much my dear! Although I didn't need to carve the pie just yet.
+                </message>
+            </interaction>
+
+            <interaction specialCondition="missItem cherry">
+                <message>
+                    Now I just need the cherry to top this cake off.
+                </message>
+            </interaction>
+
+            <interaction specialCondition="hasItem cherry">
+                <message>
+                    Oh you sure are veeeery sweet. Even sweeter than my pie! 
+                    Here do you want a slice?
+                </message>
+                <choice id="y/yes/ye/yeah/sure/ok/okay/k/kk">
+                    <interaction specialCondition="giveItem pie-slice">
+                        <message>I'm feeling tired, I think that for now I will rest on the outside bench</message>
+                        <interaction specialCondition="dropItem knife"></interaction>
+                        <interaction specialCondition="giveMemories 3"></interaction>
+                        <interaction specialCondition="moveNpc north-garden"></interaction>
+                    </interaction>
+                </choice>
+    
+                <choice id="default">
+                    <interaction specialCondition="dropItem pie-slice">
+                        <message>I'll leave the pie slice here then, for when you feel hungrier.</message>
+                        <message>And I think that now I will rest on the outside bench</message>
+                        <interaction specialCondition="dropItem knife"></interaction>
+                        <interaction specialCondition="giveMemories 3"></interaction>
+                        <interaction specialCondition="moveNpc north-garden"></interaction>
+                    </interaction>
+                </choice>
+    
+            </interaction>
+    
+        </interaction>
+
+        <interaction condition="kitchen" specialCondition="hasItem cherry">
+            <interaction specialCondition="missItem knife" totalRepetitions="1">
+                <message>Oh thank you very much my dear!</message>
+            </interaction>
+
+            <interaction specialCondition="missItem knife">
+                <message>Now I just need a knife to carve this pie.</message>
+            </interaction>
+
+            <interaction specialCondition="hasItem knife">
+                <message>
+                    Oh you sure are veeeery sweet. Even sweeter than my pie! 
+                    Here do you want a slice?
+                </message>
+                <choice id="y/yes/ye/yeah/sure/ok/okay/k/kk">
+                    <interaction specialCondition="giveItem pie-slice">
+                        <message>I'm feeling tired, I think that for now I will rest on the outside bench</message>
+                        <interaction specialCondition="dropItem knife"></interaction>
+                        <interaction specialCondition="moveNpc north-garden"></interaction>
+                    </interaction>
+                </choice>
+    
+                <choice id="default">
+                    <interaction specialCondition="dropItem pie-slice">
+                        <message>I'll leave the pie slice here then, for when you feel hungrier.</message>
+                        <message>And I think that now I will rest on the outside bench</message>
+                        <interaction specialCondition="dropItem knife"></interaction>
+                        <interaction specialCondition="moveNpc north-garden"></interaction>
+                    </interaction>
+                </choice>
+    
+            </interaction>
+    
+        </interaction>
+
+        <interaction condition="kitchen" specialCondition="missItem cherry">
+            <interaction specialCondition="missItem knife">
+                <message>
+                    Oh boy, I'm really looking for a cherry to garnish my pie, without it 
+                    it feels un-finished.
+                </message>
+            </interaction>
+        </interaction>
+        
+    </dialog>
+
+    <dialog name="sarah">
+
+        <interaction condition="default" specialCondition="hasItem knife">
+            <message>
+                Whoa! What is this!?
+                Why are you in possession of such a dangerous thing?
+                I will have to take measures immediately!!
+            </message>
+            <interaction specialCondition="endGame bad2"></interaction>
+        </interaction>
+
+        <interaction condition="sarah's-bedroom" specialCondition="hasItem paper-quire">
+            <message>I'm sorry, I can't talk, I need to finish some work.</message>
+        </interaction>
+
+        <interaction condition="livingroom" specialCondition="missItem paper-quire">
+            <message>I'm looking for these papers everywhere!</message>
+        </interaction>
+
+        <interaction condition="livingroom" totalRepetitions="1" specialCondition="hasItem paper-quire">
+            <message>
+                Oh, my papers!
+                Thank you very much, I see that indeed you have been improving really well,
+                continue on this path and you'll be as good as new!
+            </message>
+            <interaction specialCondition="giveMemories 1"></interaction>
+            <interaction specialCondition="moveNpc sarah's-bedroom"></interaction>
+        </interaction>
+
+        <interaction condition="sarah's-bedroom" specialCondition="missItem paper-quire">
+            <interaction>
+                <message>Hi John, how are you feeling today?</message>
+                <choice id="good/fine/well/positive/great/okay">
+                    <message>That's nice to hear!</message>
+                    <message>
+                        I on the other hand am ... fine.
+                        Today I've been looking everywhere for my research papers,
+                        I think I might've left them in another room.
+                        I guess I'll go search for them somewhere else!
+                    </message>
+                    <interaction specialCondition="moveNpc livingroom"></interaction>
+                </choice>
+                <choice id="bad/unwell/not good">
+                    <message>Oh I'm sorry, I better leave you alone then.</message>
+                </choice>
+
+                <choice id="default">
+                    <message>Oh I guess that you don't want to talk today.</message>
+                </choice>
+            </interaction>
+        </interaction>
+    </dialog>
+
+    <dialog name="confirmation">
+        <interaction>
+            <message>Are you sure you want to proceed?</message>
+            <choice id="y/yes/ye/yeah/sure/ok/okay/k/kk">
+                <message>You open the door and enter the next room.</message>
+                <interaction specialCondition="quitGame"></interaction>
+            </choice>
+            <choice id="default">
+                <message>You decided to not go in the next room.</message>
+            </choice>
+        </interaction>
+    </dialog>
+
+    <dialog name = "save">
+        <interaction>
+            <message>Thank you for playing. Do you wish saving your progress?</message>
+
+            <choice id="y/yes/ye/yeah/sure/ok/okay/k/kk">
+                <message>Saving in progress...</message>
+                <message>Saving completed!</message>
+
+                <interaction specialCondition="save"></interaction>
+            </choice>
+
+            <choice id="default">bob
+                <message>Are you sure? If you don't save the game will be reset.</message>
+                <interaction>
+                    <choice id="y/yes/ye/yeah/sure/ok/okay/k/kk">uyu
+                        <interaction>
+                            <message>The game has been reset.</message>
+                        </interaction>
+                    </choice>
+
+                    <choice id="default">
+                        <message>Saving in progress...</message>
+                        <message>Saving completed!</message>
+                
+                        <interaction specialCondition="save"></interaction>
+                    </choice>
+
+                </interaction>
+            </choice>
+            
+        </interaction>
+    </dialog>
+    
+</allDialog>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><allCommandWords isCorrupted="">
+    <!--  PPA - 1 / Assignment 2 - World of Zuul
+          Gabriele Trotta (K21006956)  -->
+
+    <!--
+        This xml file is part of the project called "IUNI".
+        It's a simple text adventure game, where you can walk around 
+        and interact with characters and items, in order to regain your memory.
+
+        This file contains all the information regarding command words and their description.
+
+        For each <command> node there are two attributes:
+            *"name" : the identifier with the command. To add aliases just separate them with a single "/"
+
+            *"parameters" : the parameters of the command. Otherwise what the command requires to 
+            function. To specifiy various parameters, separate them with a single space.
+        
+        The text content of each <command> node is the description of the command.
+        
+        author : Gabriele Trotta (K21006956)
+    -->
+
+    <command name="go" parameter="direction">moves the player from one room to the direction specified.</command>
+    <command name="quit/q">exits the game.</command>
+    <command name="help/h/?" parameters="command">provides help with the command specified.</command>
+    <command name="get/g/put" parameters="item">gets the item specified from the current room.</command>
+    <command name="drop/d" parameters="item">drops the item specified in the current room.</command>
+    <command name="investigate/look">allows the player to look for people and items inside the room.</command>
+    <command name="map">allows to view the layout of the current room. The "O" represents people, the "X" represents items inside the room.</command>
+    <command name="back/b">moves the player to the last room they found themselves in.</command>
+    <command name="inspect/insp" parameters="item/inventory">allows to take a closer look at the item specified.\nConversely you can look at your inventory.</command>
+    <command name="interact/use" parameters="item">allows to interact with the specified item.</command>
+    <command name="give" parameters="item person">gives the specified item to the designated person.</command>
+    <command name="talk/speak" parameters="person">allows the player to start a conversation with the designated person.</command>
+</allCommandWords>

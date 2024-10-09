@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=XmlManager
+comment1.params=fileName\ constFileName\ skipCorrupt
+comment1.target=XmlManager(java.lang.String,\ java.lang.String,\ boolean)
+comment2.params=
+comment2.target=org.w3c.dom.Document\ getXmlDocument()
+comment3.params=skipCorrupt
+comment3.target=boolean\ instantiateDocument(boolean)
+comment3.text=\r\n\ This\ function\ loads\ in\ the\ document\ dialog.xml\ in\ the\ doc\ variable\ so\ that\ we\ can\ extract\ its\ contents.\r\n\ The\ code\ used\ here\ has\ been\ partly\ taken\ from\ \:\ https\://mkyong.com/java/how-to-read-xml-file-in-java-dom-parser/\r\n\ to\ load\ in\ this\ document.\r\n
+comment4.params=
+comment4.target=void\ updateDocument()
+comment4.text=\r\n\ This\ function\ updates\ the\ dialog.xml\ file,\ to\ commit\ the\ modification\ of\ \r\n\ attributes\ (e.g.\:\ hasBeenRepated\ \=\ true)\ to\ the\ file.\r\n\r\n\ code\ from\ \:\ https\://stackhowto.com/how-to-change-an-attribute-value-in-xml-using-java-dom/\r\n\ was\ used\ to\ update\ the\ document\r\n
+comment5.params=
+comment5.target=void\ resetDocument()
+comment5.text=\r\n\ This\ function\ resets\ the\ document\ dialog.xml\ to\ it's\ unmodified\ state,\ CONST_DIALOG.xml.\r\n\ code\ from\ \:\ https\://stackhowto.com/how-to-change-an-attribute-value-in-xml-using-java-dom/\ \r\n\ was\ similarly\ used\ to\ update\ the\ dialog.xml\ file.\r\n
+comment6.params=element\ attribute\ newContent
+comment6.target=void\ modifyAttribute(org.w3c.dom.Element,\ java.lang.String,\ java.lang.String)
+comment7.params=
+comment7.target=void\ isNotCorrupt()
+comment8.params=
+comment8.target=void\ isCorrupt()
+comment9.params=string
+comment9.target=java.lang.String\ cleanString(java.lang.String)
+numComments=10
